@@ -23,3 +23,38 @@ n = 5, m = 4
 Параметры передаются в качестве аргументов командной строки!
 Например, для последнего примера на вход подаются аргументы: 5 4, ожидаемый
 вывод в консоль: 14253
+
+
+
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Enter the number of elements in the array: ");
+    int n = sc.nextInt();
+    System.out.print("Enter the interval length: ");
+    int m = sc.nextInt();
+        
+    int[] arr = new int[n];
+    Arrays.setAll(arr, i -> ++i);
+
+    int current = 0;
+    System.out.print("Path: ");
+    do {
+        System.out.print(arr[current]);
+        current = (current + m - 1) % n;
+    } while (current != 0);
+}
+
+Enter the number of elements in the array: 5
+Enter the interval length: 4
+Path: 14253
+
+Enter the number of elements in the array: 4
+Enter the interval length: 3
+Path: 13
+
+int current = 1;
+System.out.print("Path: ");
+do {
+    System.out.print(current);
+    current = (current + m - 2) % n + 1; // сдвиг на 1
+} while (current != 1);
